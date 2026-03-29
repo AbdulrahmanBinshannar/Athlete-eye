@@ -2,13 +2,14 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { LayoutDashboard, Camera, History } from "lucide-react";
+import { LayoutDashboard, Camera, History, User } from "lucide-react";
 import { cn } from "@/lib/utils";
 
 const PLAYER_NAV_ITEMS = [
   { href: "/player/dashboard", label: "الرئيسية", icon: LayoutDashboard },
   { href: "/player/scan", label: "فحص", icon: Camera },
   { href: "/player/history", label: "السجل", icon: History },
+  { href: "/profile", label: "حسابي", icon: User },
 ];
 
 export default function BottomNav() {

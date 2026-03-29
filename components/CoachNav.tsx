@@ -2,12 +2,13 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { LayoutDashboard, Users, UserPlus, Settings, LogOut } from "lucide-react";
+import { LayoutDashboard, Users, UserPlus, Settings, LogOut, User } from "lucide-react";
 import { cn } from "@/lib/utils";
 
 const NAV_ITEMS = [
   { href: "/coach/dashboard", label: "الرئيسية", icon: LayoutDashboard },
   { href: "/coach/requests", label: "الطلبات", icon: UserPlus },
+  { href: "/profile", label: "حسابي", icon: User },
   { href: "/coach/settings", label: "الإعدادات", icon: Settings },
 ];
 
