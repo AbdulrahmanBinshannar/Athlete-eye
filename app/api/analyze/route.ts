@@ -5,9 +5,9 @@ export async function POST(req: Request) {
   const { scanType } = body;
 
   // Mock Analysis Logic
-  // In a real scenario, this would send the video to a Python process (ML model)
-  const score = 7.5 + (Math.random() * 2);
-  const color = score >= 8 ? 'green' : score >= 6 ? 'yellow' : 'red';
+  // Returning scores on a 0-100 scale for premium UI consistency
+  const score = 75 + (Math.random() * 20);
+  const color = score >= 80 ? 'green' : score >= 60 ? 'yellow' : 'red';
 
   return NextResponse.json({
     score: score,
