@@ -1,0 +1,67 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  /* HSL Performance Palette */
+  --background: 240 10% 4%;
+  --foreground: 0 0% 100%;
+  --primary: 165 76% 25%;
+  --primary-glow: 165 76% 50%;
+  --secondary: 240 10% 10%;
+  --warning: 38 92% 50%;
+  --danger: 0 84% 50%;
+  --card: 240 10% 8%;
+  --border: 240 5% 15%;
+  --ring: 165 76% 25%;
+}
+
+body {
+  background-color: hsl(var(--background));
+  color: hsl(var(--foreground));
+  font-family: 'Cairo', sans-serif;
+  direction: rtl;
+  overflow-x: hidden;
+}
+
+@layer components {
+  .btn-primary {
+    @apply bg-primary text-white font-black px-8 py-3 rounded-2xl 
+           shadow-[0_0_20px_hsla(var(--primary-glow),0.3)] 
+           hover:shadow-[0_0_30px_hsla(var(--primary-glow),0.5)] 
+           transition-all duration-500 hover:scale-105 active:scale-95;
+  }
+  
+  .glass-card {
+    @apply bg-card/60 backdrop-blur-xl border border-white/5 shadow-2xl;
+  }
+  
+  .glow-text {
+    @apply shadow-[0_0_20px_hsla(var(--primary-glow),0.4)];
+  }
+}
+
+/* Page Entry Animation */
+@keyframes slideUpFade {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.animate-entry {
+  animation: slideUpFade 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+/* Scanning Glow Effect */
+@keyframes scanline {
+  0% { transform: translateY(-100%); }
+  100% { transform: translateY(1000%); }
+}
+
+.scanline {
+  background: linear-gradient(to bottom, transparent, hsl(var(--primary-glow)), transparent);
+  height: 100px;
+  width: 100%;
+  opacity: 0.1;
+  position: absolute;
+  animation: scanline 4s linear infinite;
+}
