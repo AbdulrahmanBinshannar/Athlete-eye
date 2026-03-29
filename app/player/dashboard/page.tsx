@@ -35,7 +35,7 @@ export default function PlayerDashboard() {
         .from('team_members')
         .select(`
           team_id,
-          teams (id, name, coach_id, users(name))
+          teams (id, name, coach_id, coach:coach_id (name))
         `)
         .eq('player_id', userData.user.id)
         .single();

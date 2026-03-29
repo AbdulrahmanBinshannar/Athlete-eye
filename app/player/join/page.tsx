@@ -29,11 +29,17 @@ export default function JoinTeamPage() {
     setLoading(true);
     const { data, error: teamsError } = await supabase
       .from('teams')
-      .select('id, name, code, users(name)')
+      .select(`
+        id, 
+        name, 
+        code,
+        coach:coach_id (name)
+      `)
       .order('name');
     
     if (teamsError) {
-      setError("Failed to fetch team directory.");
+      console.error("Fetch all teams error:", teamsError);
+      setError("Failed to fetch team directory: " + teamsError.message);
     } else {
       setAllTeams(data || []);
     }
@@ -52,9 +58,18 @@ export default function JoinTeamPage() {
 
     const { data, error: teamError } = await supabase
       .from('teams')
-      .select('id, name, coach_id, users(name)')
+      .select(`
+        id, 
+        name, 
+        coach_id,
+        coach:coach_id (name)
+      `)
       .eq('code', code)
       .single();
+
+    if (teamError) {
+      console.error("Search team error:", teamError);
+    }
 
     if (teamError || !data) {
       setError("الفريق غير موجود. تأكد من الكود.");
