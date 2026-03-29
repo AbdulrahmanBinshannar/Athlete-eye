@@ -9,6 +9,8 @@ export const metadata: Metadata = {
   description: "حوّل كاميرا جوالك إلى محلل جاهزية رياضي بالذكاء الاصطناعي",
 };
 
+import Navbar from "@/components/Navbar";
+
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -16,7 +18,10 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="ar" dir="rtl">
-      <body className={cairo.className}>{children}</body>
+      <body className={cairo.className}>
+        <Navbar />
+        {children}
+      </body>
     </html>
   );
 }

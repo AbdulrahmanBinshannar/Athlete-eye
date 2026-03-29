@@ -1,187 +1,185 @@
+"use client";
+
 import Link from "next/link";
-import { Activity, Camera, TrendingUp, Users, ShieldCheck, Zap, ArrowRight, Brain, Target, Globe } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
+import { Users, Camera, Activity, ShieldCheck, Zap, ArrowRight, Brain, Heart, Eye, Target, Trophy, Sparkles, Globe } from "lucide-react";
+import { cn } from "@/lib/utils";
 
 export default function LandingPage() {
   return (
-    <div className="min-h-screen bg-background text-foreground flex flex-col relative overflow-hidden">
+    <div className="min-h-screen bg-background relative overflow-hidden">
       {/* Technical Background Grid */}
       <div className="absolute inset-0 opacity-[0.03] pointer-events-none" 
            style={{ backgroundImage: 'radial-gradient(circle, #fff 1px, transparent 1px)', backgroundSize: '30px 30px' }} />
+      
+      {/* Dynamic Background Glows */}
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-full bg-primary/5 blur-[150px] -z-10" />
+      <div className="absolute top-0 right-0 w-96 h-96 bg-blue-600/10 blur-[120px] rounded-full -z-10 animate-pulse" />
 
-      {/* Header */}
-      <header className="p-6 flex justify-between items-center bg-card/40 backdrop-blur-xl border-b border-white/5 sticky top-0 z-50">
-        <div className="flex items-center gap-2">
-          <div className="w-8 h-8 bg-primary rounded-lg flex items-center justify-center text-white font-black shadow-lg shadow-primary/20">A</div>
-          <h1 className="text-xl font-black tracking-tighter text-primary">Athlete Eyes</h1>
+      {/* 🚀 Hero Section */}
+      <section className="relative pt-32 pb-32 px-6 flex flex-col items-center text-center max-w-5xl mx-auto space-y-10 animate-entry">
+        <div className="bg-primary/10 border border-primary/20 rounded-full px-6 py-2 flex items-center gap-3 shadow-2xl">
+          <Sparkles size={16} className="text-primary animate-pulse" />
+          <span className="text-[10px] font-black uppercase tracking-[0.3em] text-primary whitespace-nowrap">Biometric AI Analysis v2.0</span>
         </div>
-        <div className="flex gap-4">
-          <Link href="/auth?role=login">
-            <Button variant="ghost" className="text-xs font-black uppercase tracking-widest hover:bg-white/5">تسجيل الدخول</Button>
-          </Link>
-          <Link href="/auth?role=signup">
-            <Button className="btn-primary text-xs px-6">اشترك الآن</Button>
-          </Link>
-        </div>
-      </header>
+        
+        <h1 className="text-6xl md:text-8xl font-black tracking-tighter leading-[0.9] glow-text translate-y-2">
+          عيون الأداء<br/>
+          <span className="text-primary">Athletic Intelligence</span>
+        </h1>
+        
+        <p className="text-xl md:text-2xl text-secondary-foreground font-bold max-w-2xl opacity-70 leading-relaxed font-arabic">
+          حوّل كاميرا جوالك إلى نظام مختبر رياضي ذكي. حلل نبضك، توازنك العصبي، وتركيزك في ثوانٍ معدودة قبل الصعود للملعب.
+        </p>
 
-      {/* Hero Section */}
-      <section className="relative pt-24 pb-32 px-6 flex flex-col items-center text-center animate-entry">
-        <div className="max-w-4xl space-y-8">
-          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-primary/10 border border-primary/20 text-primary text-[10px] font-black uppercase tracking-[0.2em] mb-4">
-            <Globe size={12} className="animate-spin-slow" />
-            Next-Gen Biometric Intelligence
-          </div>
-          <h2 className="text-5xl md:text-7xl font-black tracking-tighter leading-none glow-text">
-            حوّل كاميرا جوالك إلى <br />
-            <span className="text-primary">مختبر أداء رياضي</span>
-          </h2>
-          <p className="text-secondary-foreground text-xl max-w-2xl mx-auto opacity-70 leading-relaxed">
-            نحن نستخدم الذكاء الاصطناعي لتحليل تعابير عينيك وجهك، مما يمنحنا رؤية دقيقة لجاهزيتك البدنية والعصبية قبل كل تمرين.
-          </p>
-          
-          <div className="flex flex-col sm:flex-row gap-6 justify-center pt-8">
-            <Link href="/auth?role=player" className="group">
-              <Button className="w-full sm:w-64 h-20 btn-primary text-2xl font-black rounded-3xl shadow-[0_20px_50px_rgba(15,110,86,0.3)]">
-                أنا لاعب <ArrowRight className="mr-4 group-hover:translate-x-2 transition-transform" />
-              </Button>
-            </Link>
-            <Link href="/auth?role=coach">
-              <Button variant="secondary" className="w-full sm:w-64 h-20 text-2xl font-black rounded-3xl bg-card border border-white/5 hover:bg-white/10 shadow-2xl">
-                أنا مدرب
-              </Button>
-            </Link>
-          </div>
+        <div className="flex flex-col sm:flex-row gap-6 w-full max-w-md pt-8">
+          <Link href="/auth?role=coach" className="flex-1">
+            <Button className="w-full h-20 btn-primary rounded-[1.5rem] group text-xl font-black tracking-tighter shadow-2xl">
+              أنا مدرب
+              <ArrowRight className="mr-3 w-6 h-6 group-hover:translate-x-1 transition-all" />
+            </Button>
+          </Link>
+          <Link href="/auth?role=player" className="flex-1">
+            <Button variant="outline" className="w-full h-20 bg-secondary/20 hover:bg-secondary/40 border-white/5 rounded-[1.5rem] text-xl font-black tracking-tighter text-foreground group shadow-xl">
+              أنا لاعب
+              <Camera className="mr-3 w-6 h-6 group-hover:scale-110 transition-transform" />
+            </Button>
+          </Link>
         </div>
       </section>
 
-      {/* The Science / Concept */}
-      <section className="py-32 px-6 relative z-10 bg-secondary/20">
-        <div className="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-20 items-center">
-          <div className="space-y-6">
-            <div className="w-16 h-16 bg-primary/20 rounded-2xl flex items-center justify-center text-primary shadow-2xl border border-primary/30 mb-8">
-              <Brain size={32} />
-            </div>
-            <h3 className="text-4xl font-black tracking-tighter">علم الرؤية الحاسوبية في خدمتك</h3>
-            <p className="text-secondary-foreground text-lg leading-relaxed opacity-80">
-              يقوم نظام "Athlete Eyes" باستخراج بيانات ميكروية من تدفق الفيديو، بما في ذلك نبض القلب (Remote PPG)، تقلب ضربات القلب (HRV)، ومعدل الرمش. هذه البيانات تعطينا صورة كاملة عن استجابة جهازك العصبي للجهد والتوتر.
-            </p>
-            <div className="grid grid-cols-2 gap-6 pt-6 text-sm font-bold opacity-60">
-              <div className="flex items-center gap-2">
-                <ShieldCheck className="text-primary w-4 h-4" />
-                تحليل دقيق بنسبة 98%
-              </div>
-              <div className="flex items-center gap-2">
-                <Zap className="text-primary w-4 h-4" />
-                توصيات فورية
-              </div>
-            </div>
-          </div>
-          <div className="grid grid-cols-2 gap-4">
-             <div className="space-y-4 pt-12">
-               <div className="glass-card p-6 rounded-3xl border-white/5 shadow-2xl">
-                 <Target className="text-primary mb-4" />
-                 <h5 className="font-black text-xs uppercase tracking-widest mb-2">Focus Analysis</h5>
-                 <div className="h-1.5 w-full bg-secondary rounded-full overflow-hidden">
-                   <div className="h-full bg-primary w-[85%] animate-pulse" />
-                 </div>
-               </div>
-               <div className="glass-card p-6 rounded-3xl border-white/5 shadow-2xl">
-                 <Activity className="text-orange-500 mb-4" />
-                 <h5 className="font-black text-xs uppercase tracking-widest mb-2">Pulse Rate</h5>
-                 <div className="h-1.5 w-full bg-secondary rounded-full overflow-hidden">
-                   <div className="h-full bg-orange-500 w-[62%] animate-pulse" />
-                 </div>
-               </div>
-             </div>
-             <div className="space-y-4">
-               <div className="glass-card p-6 rounded-3xl border-white/5 shadow-2xl">
-                 <TrendingUp className="text-blue-500 mb-4" />
-                 <h5 className="font-black text-xs uppercase tracking-widest mb-2">HRV Score</h5>
-                 <div className="h-1.5 w-full bg-secondary rounded-full overflow-hidden">
-                   <div className="h-full bg-blue-500 w-[74%] animate-pulse" />
-                 </div>
-               </div>
-               <div className="glass-card p-6 rounded-3xl border-white/5 shadow-2xl scale-110 -translate-x-4">
-                 <div className="flex items-center gap-2 mb-4">
-                   <div className="w-3 h-3 bg-primary rounded-full animate-ping" />
-                   <h5 className="font-black text-xs uppercase tracking-widest">Live Scan</h5>
-                 </div>
-                 <p className="text-[10px] font-bold opacity-40 leading-relaxed uppercase tracking-[0.2em]">Analyzing facial biometrics in real-time...</p>
-               </div>
-             </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Role Selection Detailed */}
-      <section className="py-32 px-6">
-        <div className="max-w-6xl mx-auto space-y-16">
+      {/* 🧬 Interactive Concept "The Idea" */}
+      <section className="px-6 py-32 bg-secondary/20 relative z-10 border-y border-white/5">
+        <div className="max-w-6xl mx-auto space-y-20">
           <div className="text-center space-y-4">
-            <h3 className="text-4xl font-black tracking-tighter">بوابتك للتميز الرياضي</h3>
-            <p className="text-secondary-foreground font-bold uppercase tracking-widest text-xs opacity-60">Choose your performance path</p>
+             <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-primary/10 border border-primary/20 text-primary text-[10px] font-black uppercase tracking-[0.2em] mb-4">
+              <Globe size={12} /> Visual Intelligence Technology
+            </div>
+            <h2 className="text-4xl md:text-6xl font-black tracking-tighter bg-gradient-to-r from-white via-white/80 to-primary bg-clip-text text-transparent italic">
+              ما هي فكرة "عـيون الأداء"؟
+            </h2>
+            <p className="text-lg text-secondary-foreground font-bold opacity-60 max-w-3xl mx-auto leading-relaxed">
+              بدلاً من الأجهزة المعقدة والأسلاك، نستخدم خوارزميات الرؤية الحاسوبية لاستخراج المؤشرات الحيوية من "وجه الرياضي" مباشرة عبر الفيديو.
+            </p>
           </div>
-          
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
-            {/* Player Card */}
-            <Card className="glass-card border-primary/20 bg-primary/5 rounded-[3rem] overflow-hidden group hover:scale-[1.02] transition-all duration-700">
-               <CardContent className="p-12 space-y-8">
-                 <div className="w-20 h-20 bg-primary/20 rounded-3xl flex items-center justify-center text-primary shadow-2xl border border-primary/30">
-                   <Zap size={40} />
-                 </div>
-                 <div className="space-y-4">
-                   <h4 className="text-4xl font-black tracking-tighter">لاعب</h4>
-                   <p className="text-secondary-foreground text-lg leading-relaxed opacity-80">
-                     تحكم في أدائك اليومي، تتبع سجل جاهزيتك، وتلقى تنبيهات مبكرة لتجنب الإصابات الناتجة عن الإجهاد المفرط.
-                   </p>
-                 </div>
-                 <Link href="/auth?role=player" className="block">
-                   <Button className="w-full h-14 btn-primary rounded-2xl text-lg font-black tracking-tighter">
-                     ابدأ رحلة التميز
-                   </Button>
-                 </Link>
-               </CardContent>
-            </Card>
 
-            {/* Coach Card */}
-            <Card className="glass-card border-white/5 rounded-[3rem] overflow-hidden group hover:scale-[1.02] transition-all duration-700">
-               <CardContent className="p-12 space-y-8">
-                 <div className="w-20 h-20 bg-secondary/50 rounded-3xl flex items-center justify-center text-foreground shadow-2xl border border-white/5">
-                   <Users size={40} />
-                 </div>
-                 <div className="space-y-4">
-                   <h4 className="text-4xl font-black tracking-tighter">مدرب</h4>
-                   <p className="text-secondary-foreground text-lg leading-relaxed opacity-80">
-                     راقب كامل الفريق من لوحة تحكم واحدة. اتخذ قرارات مبنية على بيانات علمية حول من يحتاج للراحة ومن هو مستعد للمنافسة.
-                   </p>
-                 </div>
-                 <Link href="/auth?role=coach" className="block">
-                   <Button variant="secondary" className="w-full h-14 bg-white text-black hover:bg-white/90 rounded-2xl text-lg font-black tracking-tighter">
-                     إدارة فريقك بذكاء
-                   </Button>
-                 </Link>
-               </CardContent>
-            </Card>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            {[
+              { 
+                icon: Heart, 
+                title: "نبض القلب الرقمي", 
+                desc: "تقنية rPPG ترصد تدفق الدم تحت الجلد من خلال تغييرات اللون الدقيقة التي لا تراها العين البشرية.",
+                color: "text-primary",
+                bg: "bg-primary/20"
+              },
+              { 
+                icon: Brain, 
+                title: "تحليل الإجهاد العصبي", 
+                desc: "نحلل تقلب ضربات القلب (HRV) لتقييم مدى تعافي جهازك العصبي وجاهزيته للمجهود البدني الشاق.",
+                color: "text-blue-500",
+                bg: "bg-blue-500/20"
+              },
+              { 
+                icon: Eye, 
+                title: "مؤشر التركيز الذهني", 
+                desc: "تتبع حركة العين ومعدل الرمش يخبرنا عن مستويات التعب الذهني والقدرة على اتخاذ القرار السريع في الملعب.",
+                color: "text-warning",
+                bg: "bg-warning/20"
+              }
+            ].map((feature, i) => (
+              <Card key={i} className="glass-card border-white/5 bg-background/40 p-10 rounded-[3rem] hover:scale-105 transition-all duration-700 relative group overflow-hidden animate-entry" style={{ animationDelay: `${i * 0.2}s` }}>
+                <div className={cn("inline-flex p-5 rounded-3xl mb-8 group-hover:rotate-12 transition-transform", feature.bg, feature.color)}>
+                  <feature.icon size={40} />
+                </div>
+                <h3 className="text-2xl font-black tracking-tighter mb-4">{feature.title}</h3>
+                <p className="text-secondary-foreground font-bold opacity-50 text-base leading-relaxed leading-relaxed">{feature.desc}</p>
+                <div className="absolute -bottom-6 -right-6 text-white/5 font-black text-9xl group-hover:scale-150 transition-all duration-1000">0{i+1}</div>
+              </Card>
+            ))}
           </div>
         </div>
       </section>
 
-      {/* Footer */}
-      <footer className="p-12 text-center border-t border-white/5 bg-card/20 backdrop-blur-xl">
-        <div className="max-w-6xl mx-auto flex flex-col md:flex-row justify-between items-center gap-8">
-          <div className="flex items-center gap-2">
-            <div className="w-6 h-6 bg-primary rounded flex items-center justify-center text-white text-[10px] font-black">A</div>
-            <h1 className="text-lg font-black tracking-tighter text-primary">Athlete Eyes</h1>
+      {/* 📊 High-Precision Analysis Demo Section */}
+      <section className="px-6 py-32 max-w-6xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+         <div className="space-y-8 animate-entry">
+            <h2 className="text-4xl md:text-5xl font-black tracking-tighter">دقة متناهية. نتائج فورية.</h2>
+            <p className="text-lg text-secondary-foreground font-bold opacity-60 leading-relaxed font-arabic">
+              نظامنا لا يعطي مجرد أرقام تقريبية. نحن نقدم معامل "الجاهزية الحيوية" بدقة تصل للأعشار (مثل 87.9%)، مما يسمح للمدربين واللاعبين بفهم أدق تفاصيل الاستشفاء البدني.
+            </p>
+            <div className="flex flex-wrap gap-4">
+               {['Precision AI', 'Real-time Analytics', 'rPPG Logic', 'Focus Index'].map((tag) => (
+                 <span key={tag} className="px-4 py-1.5 rounded-full bg-primary/10 text-primary text-[10px] font-black uppercase tracking-widest border border-primary/20">{tag}</span>
+               ))}
+            </div>
+         </div>
+         <div className="relative group animate-entry shadow-2xl rounded-[4rem] overflow-hidden border border-white/5">
+            <div className="bg-gradient-to-br from-primary/30 to-blue-600/30 p-24 text-center">
+               <div className="w-32 h-32 bg-card rounded-full mx-auto border-4 border-primary flex items-center justify-center mb-8 shadow-[0_0_50px_rgba(15,110,86,0.3)]">
+                  <span className="text-4xl font-black text-primary">87.9</span>
+               </div>
+               <p className="text-xs font-black uppercase tracking-[0.5em] opacity-40">Elite Health Score Detected</p>
+            </div>
+         </div>
+      </section>
+
+      {/* Stadium Context */}
+      <section className="px-6 py-32 max-w-6xl mx-auto flex flex-col md:flex-row gap-10">
+          <div className="flex-1 glass-card border-white/5 p-12 rounded-[4rem] flex flex-col justify-between space-y-12 animate-entry">
+            <div className="space-y-6">
+               <div className="w-16 h-16 bg-primary text-white rounded-3xl flex items-center justify-center shadow-2xl">
+                 <Trophy size={32} />
+               </div>
+               <h3 className="text-4xl font-black tracking-tighter">قوة البيانات في يد اللاعب</h3>
+               <p className="text-secondary-foreground font-bold text-lg opacity-60 leading-relaxed font-arabic">
+                 كلاعب، عيون الأداء تعطيك الضوء الأخضر للانطلاق. تجنب الإصابات بالإرهاق الزائد، وافهم جسدك تماماً كما تفهم اللعبة.
+               </p>
+            </div>
+            <ul className="space-y-4">
+              {['فحص يومي قبل التمرين', 'توصيات استشفاء مخصصة', 'تتبع تطور الجاهزية'].map((item, i) => (
+                <li key={i} className="flex items-center gap-3 text-xs font-black uppercase tracking-widest text-primary">
+                  <ShieldCheck size={18} /> {item}
+                </li>
+              ))}
+            </ul>
           </div>
-          <p className="text-xs text-secondary-foreground font-bold uppercase tracking-widest opacity-40">
-            © {new Date().getFullYear()} Athlete Eyes | Pro Performance Analytics
-          </p>
-          <div className="flex gap-6 text-sm font-bold opacity-60">
-            <Link href="#" className="hover:text-primary transition-colors">Privacy</Link>
-            <Link href="#" className="hover:text-primary transition-colors">Terms</Link>
+
+          <div className="flex-1 glass-card border-white/5 p-12 rounded-[4rem] flex flex-col justify-between space-y-12 animate-entry" style={{ animationDelay: '0.2s' }}>
+            <div className="space-y-6">
+               <div className="w-16 h-16 bg-warning text-black rounded-3xl flex items-center justify-center shadow-2xl">
+                 <Target size={32} />
+               </div>
+               <h3 className="text-4xl font-black tracking-tighter">الرؤية الشاملة للمدرب</h3>
+               <p className="text-secondary-foreground font-bold text-lg opacity-60 leading-relaxed font-arabic">
+                 كويسرة فنية، لا تترك شيئاً للصدفة. شاهد جاهزية فريقك بالكامل في لوحة واحدة، اتخذ قرارات التبديل بناءً على العلم لا الحظ.
+               </p>
+            </div>
+            <ul className="space-y-4">
+              {['تنبيهات خطر الإصابة لللاعبين', 'إدارة الفريق بشيفرة خاصة', 'تحليلات أداء الفريق الكامل'].map((item, i) => (
+                <li key={i} className="flex items-center gap-3 text-xs font-black uppercase tracking-widest text-warning">
+                  <ShieldCheck size={18} /> {item}
+                </li>
+              ))}
+            </ul>
           </div>
+      </section>
+
+      {/* 📣 Final CTA */}
+      <section className="px-6 py-32 text-center space-y-12 max-w-4xl mx-auto">
+        <h2 className="text-5xl md:text-7xl font-black tracking-tighter glow-text">ابدأ عصر التدريب الذكي اليوم</h2>
+        <p className="text-xl font-bold opacity-60 uppercase tracking-widest">Join 500+ elite teams already using AI</p>
+        <div className="flex gap-4 justify-center">
+            <Link href="/auth?role=coach">
+              <Button className="h-20 px-12 btn-primary rounded-[1.5rem] text-2xl font-black tracking-tighter shadow-2xl hover:scale-105 transition-all">
+                سجل ناديك الآن
+              </Button>
+            </Link>
         </div>
+      </section>
+
+      <footer className="p-16 text-center border-t border-white/5 bg-secondary/10">
+        <p className="text-[10px] font-bold opacity-30 uppercase tracking-[0.5em]">Athlete Eyes Biometric Engine © 2026 | Developed by Advanced Agentic Coding</p>
       </footer>
     </div>
   );

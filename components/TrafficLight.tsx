@@ -39,7 +39,7 @@ export default function TrafficLight({ score, size = "lg" }: { score: number, si
             colors.main,
             isLarge ? "text-6xl" : "text-3xl"
           )}>
-            {score.toFixed(0)}
+            {score.toFixed(1)}
           </span>
           <span className="text-[10px] font-bold opacity-40 uppercase tracking-[0.2em] mt-1">Readiness</span>
         </div>

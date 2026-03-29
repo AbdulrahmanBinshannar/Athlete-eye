@@ -5,9 +5,9 @@ export async function POST(req: Request) {
   const { scanType } = body;
 
   // Mock Analysis Logic
-  // Returning scores on a 0-100 scale for premium UI consistency
-  const score = 75 + (Math.random() * 20);
-  const color = score >= 80 ? 'green' : score >= 60 ? 'yellow' : 'red';
+  // Returning high-precision scores (e.g., 87.9) for premium UI consistency
+  const score = 78 + (Math.random() * 18.5);
+  const color = score >= 85 ? 'green' : score >= 65 ? 'yellow' : 'red';
 
   return NextResponse.json({
     score: score,
