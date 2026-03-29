@@ -16,8 +16,8 @@ export default function JoinTeamPage() {
   const [error, setError] = useState("");
 
   const handleSearch = async () => {
-    if (!code.startsWith("AE-") || code.length !== 10) {
-      setError("تنسيق الكود غير صحيح (AE-XXXX-YY)");
+    if (code.length !== 5 || !/^\d+$/.test(code)) {
+      setError("تنسيق الكود غير صحيح (مكون من 5 أرقام)");
       return;
     }
 
@@ -68,22 +68,24 @@ export default function JoinTeamPage() {
       <Card className="w-full max-w-md glass-card border-white/5 shadow-2xl rounded-[2.5rem] overflow-hidden animate-entry">
         <CardHeader className="text-center pt-10 pb-6">
           <CardTitle className="text-4xl font-black tracking-tighter glow-text">انضمام للفريق</CardTitle>
-          <CardDescription className="text-xs font-bold uppercase tracking-widest opacity-60 mt-2">Enter your performance code</CardDescription>
+          <CardDescription className="text-xs font-bold uppercase tracking-widest opacity-60 mt-2">Enter your 5-digit performance code</CardDescription>
         </CardHeader>
         <CardContent className="space-y-8 p-10">
           <div className="space-y-4">
             <div className="relative group">
               <Input
-                placeholder="AE-XXXX-YY"
-                className="h-16 text-center text-3xl font-black tracking-[0.2em] bg-secondary/50 border-white/5 rounded-2xl focus:ring-primary focus:border-primary transition-all pr-12"
+                placeholder="12345"
+                maxLength={5}
+                type="text"
+                className="h-16 text-center text-4xl font-black tracking-[0.5em] bg-secondary/50 border-white/5 rounded-2xl focus:ring-primary focus:border-primary transition-all pr-12"
                 value={code}
-                onChange={(e) => setCode(e.target.value.toUpperCase())}
+                onChange={(e) => setCode(e.target.value.replace(/\D/g, ''))}
               />
               <div className="absolute left-4 top-1/2 -translate-y-1/2 opacity-20 group-focus-within:opacity-100 transition-opacity">
                 <Users size={24} />
               </div>
             </div>
-            <Button onClick={handleSearch} disabled={loading} className="w-full h-14 btn-primary rounded-2xl text-xl font-black tracking-tighter">
+            <Button onClick={handleSearch} disabled={loading} className="w-full h-14 btn-primary rounded-2xl text-xl font-black tracking-tighter shadow-[0_10px_30px_rgba(15,110,86,0.2)]">
               {loading ? "جاري البحث..." : "ابحث عن فريقك"}
               <Search className="mr-3 w-5 h-5" />
             </Button>
